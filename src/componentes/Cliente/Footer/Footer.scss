@@ -1,0 +1,17 @@
+.container{
+    background: #584f5a;
+
+    &__letra{
+        font-size: 40px ;
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: #fff;
+    }
+
+    &__parrafo{
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        color: #000;
+    }
+}

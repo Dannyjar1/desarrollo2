@@ -1,0 +1,28 @@
+.menu-cliente{
+    margin: 40px 0;
+    text-align: left;
+    background: #fbf6f6;
+    border-radius: 15px;
+    padding: 10px;
+    &__content{
+        margin: 0 20px;
+        color: #000;
+        padding-bottom: 9px;
+        font-size: 1em;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 2px solid transparent;
+        /* hover */ 
+        border-bottom: 3px solid #7a2222;
+
+            >:hover {
+                border-bottom: 3px solid #7a2222;
+            }
+    }
+}
+.img {
+    border: 5px solid darkblue;
+    width: 300px;
+    margin: 10%;
+    padding: 10%;
+  }
