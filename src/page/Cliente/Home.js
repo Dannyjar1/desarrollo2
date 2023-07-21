@@ -7,6 +7,7 @@ export function Home() {
     
         <Header/>
         <AgregarDenuncia/>
+        
           <Bienvenida/>
         <Footer/>
     </div>

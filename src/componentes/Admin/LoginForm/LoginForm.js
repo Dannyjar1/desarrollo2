@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import "./LoginForm.scss"
 export function LoginForm() {
     const [loginEmail, setLoginEmail] = useState('');
     const [loginPassword, setLoginPassword] = useState('');
@@ -16,8 +16,9 @@ export function LoginForm() {
   
     return (
 
-      
-      <div className="container">
+    <body className="cabecera1">
+      <div>
+      <div className="cabecera">
         <h1 className="center-align mt-5">Inicio de sesión</h1>
         <form onSubmit={handleLoginSubmit}>
           <div className="row">
@@ -58,7 +59,13 @@ export function LoginForm() {
           </p>
         </form>
       </div>
+      </div>
+      </body>
+
     );
   }
 
 export default LoginForm;
+
+
+

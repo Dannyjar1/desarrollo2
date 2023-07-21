@@ -1,2 +1,53 @@
+.back{
+    height: 80vh;
+    background-image: linear-gradient(to right bottom, #c8002f59, #6f0c0c),
+        url('https://ccq.ec/wp-content/uploads/2020/06/UIDE-1024x829.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    margin: 0 0 40px 0;
+        
+}
 
+.texto{
+    font-size: 15px ;
+        font-family:Arial, Helvetica, sans-serif;
+        text-align: right;
+        color: #fff;
+        margin-top: 150px;
+        
+}
 
+.contenedor {
+    margin: 15px;
+    padding:  15px;
+}
+
+.boton1{
+    background: #fedc01;
+    box-sizing: border-box;
+    border-radius: 0.6rem;
+    align-self: right;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 15px;
+    padding:  15px;
+    text-align: right;
+    color: rgb(46, 46, 46);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    cursor: pointer;
+}
+.boton1:hover{
+    border-bottom: 3px solid #fedc01;
+    background: #f4cbcb;
+    text-align: center;
+    color: rgb(17, 17, 17);
+}
+
+.mover{
+    margin-left: 200px;
+    margin-top: 200px;
+    width: 300px;
+    height: 300px;
+
+}

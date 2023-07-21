@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-
+import "./RegistroForm.scss"; // Reutilizar el archivo de estilos
 
 export function RegistroForm() {
-    const [cedula, setCedula] = useState('');
-    const [telefono, setTelefono] = useState('');
-    const [foto, setFoto] = useState(null);
-    const [registroEmail, setRegistroEmail] = useState('');
-    const [registroPassword, setRegistroPassword] = useState('');
-    const navigate = useNavigate();
-  
-    const handleRegistrationSubmit = (e) => {
-      e.preventDefault();
-      // Lógica de inicio de sesión COOREGIR !!!!
-  
-      navigate('/bienvenida');
-    };
-  
-    return (
-      <div className="container">
+  const [cedula, setCedula] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [foto, setFoto] = useState(null);
+  const [registroEmail, setRegistroEmail] = useState('');
+  const [registroPassword, setRegistroPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleRegistrationSubmit = (e) => {
+    e.preventDefault();
+    // Lógica de registro COOREGIR !!!!
+
+    navigate('/bienvenida');
+  };
+
+  return (
+    <div className="cabecera1">
+      <div className="cabecera">
         <h2 className="center-align">Registro</h2>
         <form onSubmit={handleRegistrationSubmit}>
           <div className="row">
@@ -34,8 +34,6 @@ export function RegistroForm() {
                 required
               />
             </div>
-
-
           </div>
           <div className="row">
             <div className="input-field col s12">
@@ -49,8 +47,6 @@ export function RegistroForm() {
                 required
               />
             </div>
-
-     
           </div>
           <div className="row">
             <div className="file-field input-field">
@@ -97,9 +93,9 @@ export function RegistroForm() {
             </div>
           </div>
         </form>
-
-  
-      
       </div>
-    );
-  }
+    </div>
+  );
+}
+
+export default RegistroForm;
