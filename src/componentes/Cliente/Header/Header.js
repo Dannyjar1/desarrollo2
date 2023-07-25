@@ -1,22 +1,19 @@
-import React from 'react'
-import './Header.scss'
+import React from 'react';
+import './Header.scss';
+import { Icon } from 'semantic-ui-react';
 
 export function Header() {
-  return (
-    <div>
+    return (
         <header className='header'>
             <div className='header__primary'>
-                <span className='header__primary'>Denuncias de Barrios </span>
+                <Icon name='bullhorn' size='small' />
+                <span className='header__primary-text'>Denuncia Loja</span>
             </div>
-            <div className='primario' >
-                <h1>
-                    <span className='primario__main'>Un sitio web para tí </span>
-                </h1>
-                <a href='http://localhost:3000/agregar-investigacion' className='boton1'>
-                    Realiza tu denuncia aquí
+            <div className='primario'>
+                <a href='/login' className='boton1'>
+                    Iniciar Sesion
                 </a>
             </div>
         </header>
-    </div>
-  )
+    );
 }

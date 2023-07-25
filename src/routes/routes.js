@@ -15,7 +15,8 @@ el operador ...
 
 const routes =[  ...routesCliente, {
     layout: BasicLayout, 
-    component: Error404
+    component: Error404,
+    path: "*"
 } ];
 
 export default routes;

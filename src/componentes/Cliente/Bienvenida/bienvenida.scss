@@ -1,53 +1,75 @@
-.back{
+.back {
     height: 80vh;
     background-image: linear-gradient(to right bottom, #c8002f59, #6f0c0c),
         url('https://ccq.ec/wp-content/uploads/2020/06/UIDE-1024x829.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
-    margin: 0 0 40px 0;
-        
+    margin: 0 0 0 0;
+
+    @media (max-width: 768px) {
+        height: 60vh;
+    }
 }
 
-.texto{
-    font-size: 15px ;
-        font-family:Arial, Helvetica, sans-serif;
-        text-align: right;
-        color: #fff;
-        margin-top: 150px;
-        
+.texto {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    color: #fff;
+    padding: 10px;
+
+    @media (max-width: 768px) {
+        font-size: 15px;
+        padding: 0 10px;
+    }
 }
 
 .contenedor {
     margin: 15px;
-    padding:  15px;
+    padding: 30px;
+    width: 100%;
+
+    @media screen and (max-width: 768px) {
+        width: 220%;
+    }
+
 }
 
-.boton1{
+
+.boton1 {
     background: #fedc01;
     box-sizing: border-box;
     border-radius: 0.6rem;
-    align-self: right;
     font-size: 14px;
     font-weight: 400;
     margin: 15px;
-    padding:  15px;
-    text-align: right;
+    padding: 15px;
+    text-align: center;
     color: rgb(46, 46, 46);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     cursor: pointer;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+        margin: 10px auto;
+        padding: 10px 20px;
+    }
 }
-.boton1:hover{
+
+.boton1:hover {
     border-bottom: 3px solid #fedc01;
     background: #f4cbcb;
-    text-align: center;
     color: rgb(17, 17, 17);
 }
 
-.mover{
+.mover {
     margin-left: 200px;
     margin-top: 200px;
     width: 300px;
     height: 300px;
 
+    @media (max-width: 768px) {
+        display: none;
+    }
 }

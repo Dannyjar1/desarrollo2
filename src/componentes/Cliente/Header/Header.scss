@@ -1,50 +1,55 @@
-.header{
-    height: 80vh;
-    background-image: linear-gradient(to right bottom, #c8002f59, #6f0c0c),
-        url('https://ccq.ec/wp-content/uploads/2020/06/UIDE-1024x829.jpeg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    
-    margin: 0 0 40px 0;
-    &__primary{
-        font-size: 40px ;
-        font-family:Arial, Helvetica, sans-serif;
-        text-align: right;
-        color: #fff;
-        height: auto;
-        padding: 8em 20px 0 0;
-        
-    }        
-}
+.header {
+    height: 15vh;
+    background-color: rgb(100, 28, 28);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: #fff;
 
-.primario{
-    font-size: 40px ;
-        font-family:Arial, Helvetica, sans-serif;
-        text-align: right;
-        color: #fff;
-        height: 30px;
-        padding: 1em 50px 0 0;
-        
-}
+    .header__primary {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        flex: 1;
+        text-align: left;
 
-.boton1{
-    background: #fedc01;
-    box-sizing: border-box;
-    border-radius: 0.6rem;
-    align-self: right;
-    font-size: 14px;
-    font-weight: 400;
-    margin: 15px;
-    padding:  15px;
-    text-align: right;
-    color: rgb(46, 46, 46);
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    cursor: pointer;
-}
-.boton1:hover{
-    border-bottom: 3px solid #fedc01;
-    background: #f4cbcb;
-    text-align: center;
-    color: rgb(17, 17, 17);
+        @media (max-width: 768px) {
+            font-size: 22px;
+            padding-right: 10px;
+            
+        }
+    }
+
+    .primario {
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: right;
+        flex: 1;
+
+        @media (max-width: 768px) {
+            font-size: 24px;
+            padding-left: 10px;
+        }
+    }
+
+    .boton1 {
+        background: #fedc01;
+        box-sizing: border-box;
+        border-radius: 0.6rem;
+        font-size: 14px;
+        font-weight: 400;
+        padding: 15px;
+        color: rgb(46, 46, 46);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        cursor: pointer;
+
+        @media (max-width: 768px) {
+            font-size: 12px;
+        }
+    }
+
+    .boton1:hover {
+        border-bottom: 3px solid #fedc01;
+        background: #f4cbcb;
+        color: rgb(17, 17, 17);
+    }
 }
