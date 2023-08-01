@@ -10,15 +10,13 @@ export function Footer() {
         <Menu inverted secondary >
           <Menu.Item disabled>
           </Menu.Item>
-          <Menu.Item as="h5">
-            (c) Proyecto desarrollado by tu papi
+          <Menu.Item className="copy" as="h5" >
+            Build 2023 (c) Proyecto desarrollado por yop
           </Menu.Item>
-          <Menu.Item position='right'>
-            <Input icon={{ name: 'search', link: true }} placeholder='Buscar...' />
-          </Menu.Item>
-          <Menu.Item as="h6">
-            Build 2023
-          </Menu.Item>
+          {/* <Menu.Item  position='right'>
+            <Input size='small' className="search" icon={{ name: 'search', link: true }} placeholder='Buscar...' />
+          </Menu.Item> */}
+          
 
         </Menu>
       </Segment>

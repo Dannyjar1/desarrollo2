@@ -1,14 +1,13 @@
 import React from 'react'
-import { Footer, Header,Bienvenida,AgregarDenuncia } from  '../../componentes/Cliente'
+import { Footer, HeaderCliente,Bienvenida,AgregarDenuncia } from  '../../componentes/Cliente'
 
 export function Home() {
   return (
     <div> 
     
-        <Header/>
-        <AgregarDenuncia/>
-        
-          <Bienvenida/>
+
+        <HeaderCliente/>
+        <AgregarDenuncia/>          
         <Footer/>
     </div>
   )

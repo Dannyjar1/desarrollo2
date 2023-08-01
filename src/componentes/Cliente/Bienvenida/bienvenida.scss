@@ -1,14 +1,16 @@
 .back {
-    height: 80vh;
+    height: 100%;
     background-image: linear-gradient(to right bottom, #c8002f59, #6f0c0c),
         url('https://ccq.ec/wp-content/uploads/2020/06/UIDE-1024x829.jpeg');
     background-size: cover;
     background-position: center;
     position: relative;
+    overflow: hidden;
+    width: auto;
     margin: 0 0 0 0;
 
     @media (max-width: 768px) {
-        height: 60vh;
+        height: auto;
     }
 }
 
@@ -17,21 +19,29 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
     color: #fff;
-    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
+    height: 600px !important;
 
     @media (max-width: 768px) {
-        font-size: 15px;
+        font-size: 10x;
         padding: 0 10px;
     }
 }
 
 .contenedor {
-    margin: 15px;
-    padding: 30px;
-    width: 100%;
+    margin: 8px;
+    padding: 10px;
+    width: 50%;
+    overflow: hidden;
+    
 
-    @media screen and (max-width: 768px) {
-        width: 220%;
+    @media  (max-width: 768px) {
+        width: 90%;
+        font-size: 10x;
+        
+        overflow: hidden;
+
     }
 
 }

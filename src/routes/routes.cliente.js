@@ -1,5 +1,5 @@
 import {ClienteLayout } from '../layouts'
-import { Mensaje } from '../page/Cliente'
+import { Home, Mensaje } from '../page/Cliente'
 import {LoginAdmin} from '../page/Admin/LoginAdmin'
 import { RegistroForm } from '.././componentes/Admin/RegistroForm/RegistroForm';
 
@@ -23,8 +23,13 @@ const routesCliente = [
         path:"/registro",
         layout: ClienteLayout,
         component: RegistroForm
-    }
+    },
     
+    {
+        path:"/home",
+        layout: ClienteLayout,
+        component: Home
+    }
 ];
 
 export default routesCliente
