@@ -1,5 +1,5 @@
 import {ClienteLayout } from '../layouts'
-import { Home, Mensaje } from '../page/Cliente'
+import { Home, Mensaje, Denuncias, FormularioDenuncia, MisDenuncias } from '../page/Cliente'
 import {LoginAdmin} from '../page/Admin/LoginAdmin'
 import { RegistroForm } from '.././componentes/Admin/RegistroForm/RegistroForm';
 
@@ -22,13 +22,29 @@ const routesCliente = [
     {
         path:"/registro",
         layout: ClienteLayout,
-        component: RegistroForm
+        component: RegistroForm,
     },
     
     {
         path:"/home",
         layout: ClienteLayout,
-        component: Home
+        component: Home,
+    },
+
+    {
+        path:"/denuncias",
+        layout: ClienteLayout,
+        component: Denuncias,
+    },
+    {
+        path:"/formulariodenuncia",
+        layout: ClienteLayout,
+        component: FormularioDenuncia,
+    },
+    {
+        path:"/misdenuncias",
+        layout: ClienteLayout,
+        component: MisDenuncias
     }
 ];
 

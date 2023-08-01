@@ -103,6 +103,7 @@ export function RegistroForm () {
   return (
     <div className="page-container">
       <div className="card container1"> {/* Wrap the form in a card */}
+      <h1>Registro</h1>
         <form onSubmit={handleSubmit}>
         <div className="input-field">
           <label htmlFor="nombreCompleto" className="submarine-label">
@@ -174,6 +175,7 @@ export function RegistroForm () {
         </div>
         <div className="input-field">
           <label htmlFor="password" className="submarine-label">
+            Contraseña
           </label>
           <input
             type="password"

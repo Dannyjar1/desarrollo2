@@ -1,5 +1,5 @@
 export * from './Mensaje'
-export * from './Denunciantes'
+export * from './MisDenuncias'
 export * from './Denuncias'
 export * from './FormularioDenunciante'
 export * from './Home'
