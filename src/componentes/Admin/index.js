@@ -1,2 +1,2 @@
-export * from './RegistroForm'
+export * from './RegistroForm/'
 export * from './LoginForm'

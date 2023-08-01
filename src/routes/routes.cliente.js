@@ -1,7 +1,8 @@
 import {ClienteLayout } from '../layouts'
 import { Mensaje } from '../page/Cliente'
 import {LoginAdmin} from '../page/Admin/LoginAdmin'
-import { RegistroForm } from '../componentes/Admin/RegistroForm';
+import { RegistroForm } from '.././componentes/Admin/RegistroForm/RegistroForm';
+
 
 /* ,Denuncia, AgregarDenuncia,Categoria,VerCategoria */
 

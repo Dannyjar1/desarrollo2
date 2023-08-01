@@ -1,117 +1,30 @@
-.cabecera1 {
-    background: linear-gradient(to bottom right, #1845ad, #23a2f6);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .cabecera {
-    width: 400px;
-    background-color: rgba(255, 255, 255, 0.13);
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-    padding: 50px 35px;
-  
-    h1 {
-      font-size: 28px;
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 30px;
-      color: #ffffff;
-    }
-  
-    form {
-      display: flex;
-      flex-direction: column;
-  
-      .input-field {
-        margin-bottom: 20px;
-  
-        label {
-          font-size: 16px;
-          font-weight: 500;
-          color: #ffffff;
-        }
-  
-        input {
-          height: 50px;
-          width: 100%;
-          background-color: rgba(255, 255, 255, 0.07);
-          border-radius: 3px;
-          padding: 0 10px;
-          font-size: 14px;
-          font-weight: 300;
-          color: #ffffff;
-  
-          &::placeholder {
-            color: #e5e5e5;
-          }
-        }
-      }
-  
-      .center-align {
-        text-align: center;
-        margin-top: 30px;
-  
-        button {
-          width: 100%;
-          background-color: #ffffff;
-          color: #080710;
-          padding: 15px 0;
-          font-size: 18px;
-          font-weight: 600;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: background-color 0.2s;
-  
-          &:hover {
-            background-color: #f0f0f0;
-          }
-        }
-      }
-  
-      .mt-3 {
-        margin-top: 20px;
-        color: #ffffff;
-        font-size: 14px;
-  
-        a {
-          color: #23a2f6;
-          text-decoration: none;
-          font-weight: 500;
-  
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-    }
-  
-    .social {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-  
-      div {
-        background: linear-gradient(to right, #ff512f, #f09819);
-        width: 150px;
-        border-radius: 3px;
-        padding: 5px 10px 10px 5px;
-        background-color: rgba(255, 255, 255, 0.27);
-        color: #eaf0fb;
-        text-align: center;
-        margin-right: 10px;
-  
-        &:hover {
-          background-color: rgba(255, 255, 255, 0.47);
-        }
-      }
-  
-      i {
-        margin-right: 4px;
-      }
-    }
-  }
+@import "~materialize-css/sass/materialize";
+
+
+.page-container {
+  background: #474849;
+  height: 100vh;
+  /* Ensure the container takes up the full viewport height */
+
+  display: flex;
+  justify-content: center;
+  /* Center the card horizontally */
+  align-items: center;
+  /* Center the card vertically */
+}
+
+.card.container1 {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn submarine-btn {
+  align-items: center;
+}
+
+.btn submarine-btn:hover {
+  background-color: #06283D;
+  color: #fff;
+}
