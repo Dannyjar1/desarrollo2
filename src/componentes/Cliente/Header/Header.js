@@ -13,7 +13,13 @@ export function Header() {
                 <a href='/login' className='boton1'>
                     Iniciar Sesion
                 </a>
+                <a href='/registro' className='boton1'>
+                    Registrarse
+                </a>
             </div>
+            {/* <div className='secundario'>
+
+            </div> */}
         </header>
     );
 }
