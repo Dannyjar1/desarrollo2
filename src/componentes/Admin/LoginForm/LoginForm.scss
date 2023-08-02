@@ -27,7 +27,7 @@
 
 .botonSubmit {
   color: #fff;
-  background-color: #6f0c0c;
+  background-color: #741c1c;
   border-radius: 10px;
   padding: 10px 20px;
   width: auto;
@@ -38,7 +38,7 @@
 }
 
 .botonSubmit:hover {
-  background-color: #ce4646;
+  background-color: #ce4b4b;
   color: #fff;
 }
 
@@ -55,8 +55,10 @@
   transition: 0.3s;
   font-size: 16px;
   color: #06283D;
-  transform-origin: left top;
-  transform: translateY(0);
+}
+
+.active {
+  transform: translateY(-25px) scale(0.8);
 }
 
 .submarine-input {
@@ -68,18 +70,5 @@
   color: #06283D;
   &:focus {
     outline: none;
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
-  }
-  &:valid {
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
-  }
-  &:not(:placeholder-shown) {
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
   }
 }

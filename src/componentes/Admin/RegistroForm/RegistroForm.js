@@ -1,38 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import { FaUser, FaAddressCard, FaPhone, FaEnvelope, FaLock, FaImage } from 'react-icons/fa';
-import "react-toastify/dist/ReactToastify.css";
+import { FaUser, FaAddressCard, FaPhone, FaEnvelope, FaLock, FaImage } from "react-icons/fa";
 import * as yup from "yup";
 import "./RegistroForm.scss";
 
-export function RegistroForm() {
+export function RegistroForm () {
   const validationSchema = yup.object().shape({
-    nombreCompleto: yup
-      .string()
-      .required("El nombre completo es requerido.")
-      .min(6, "El nombre completo debe tener al menos 6 caracteres.")
-      .max(255, "El nombre completo no puede tener más de 255 caracteres."),
-    cedula: yup
-      .string()
-      .required("La cédula es requerida.")
-      .min(6, "La cédula debe tener al menos 6 caracteres.")
-      .max(10, "La cédula no puede tener más de 10 caracteres."),
-    numTelefono: yup
-      .string()
-      .required("El número de teléfono es requerido.")
-      .min(6, "El número de teléfono debe tener al menos 6 caracteres.")
-      .max(10, "El número de teléfono no puede tener más de 10 caracteres."),
-    email: yup
-      .string()
-      .required("El email es requerido.")
-      .email("Ingresa un email válido.")
-      .min(6, "El email debe tener al menos 6 caracteres.")
-      .max(255, "El email no puede tener más de 255 caracteres."),
-    password: yup
-      .string()
-      .required("La contraseña es requerida.")
-      .min(6, "La contraseña debe tener al menos 6 caracteres.")
+    nombreCompleto: yup.string().required("El nombre completo es requerido.").min(6, "El nombre completo debe tener al menos 6 caracteres.").max(255, "El nombre completo no puede tener más de 255 caracteres."),
+    cedula: yup.string().required("La cédula es requerida.").min(6, "La cédula debe tener al menos 6 caracteres.").max(10, "La cédula no puede tener más de 10 caracteres."),
+    numTelefono: yup.string().required("El número de teléfono es requerido.").min(6, "El número de teléfono debe tener al menos 6 caracteres.").max(10, "El número de teléfono no puede tener más de 10 caracteres."),
+    email: yup.string().required("El email es requerido.").email("Ingresa un email válido.").min(6, "El email debe tener al menos 6 caracteres.").max(255, "El email no puede tener más de 255 caracteres."),
+    password: yup.string().required("La contraseña es requerida.").min(6, "La contraseña debe tener al menos 6 caracteres.")
   });
 
   const [formData, setFormData] = useState({
@@ -48,31 +27,28 @@ export function RegistroForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value
-    });
+    }));
   };
-  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
     const selectedFile = files[0];
-
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: selectedFile
-    });
-
-    setFileName(selectedFile ? selectedFile.name : "");
+    }));
   };
 
   const handleRemovePhoto = () => {
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       photo: null
-    });
+    }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,16 +73,10 @@ export function RegistroForm() {
         setErrors(validationErrors);
       } else {
         console.error("Error en el registro:", error);
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.error
-        ) {
+        if (error.response && error.response.data && error.response.data.error) {
           toast.error(error.response.data.error);
         } else {
-          toast.error(
-            "Error en el registro. Por favor, inténtalo de nuevo más tarde."
-          );
+          toast.error("Error en el registro. Por favor, inténtalo de nuevo más tarde.");
         }
       }
     }
@@ -233,48 +203,46 @@ export function RegistroForm() {
             )}
           </div>
           <div className="input-container">
-            <div className="icon-wrapper">
-              <FaImage className="input-icon" />
+        <div className="icon-wrapper">
+          <FaImage className="input-icon" />
+        </div>
+        <label
+          htmlFor="photo"
+          className={formData.photo ? "active" : "submarine-label"}
+        >
+          Foto de perfil:
+        </label>
+        <div className="file-field input-field">
+          {formData.photo ? (
+            <div className="photo-container">
+              {/* Muestra el nombre del archivo seleccionado */}
+              <span>{formData.photo.name}</span>
+              <button
+                type="button"
+                className="remove-photo-button"
+                onClick={handleRemovePhoto}
+              >
+                Eliminar foto
+              </button>
             </div>
-            <label
-              htmlFor="photo"
-              className={formData.photo ? "active" : "submarine-label"}
-            >
-              Foto de perfil:
-            </label>
-            <div className="file-field input-field">
-              {formData.photo ? (
-                <div className="photo-container">
-                  <img
-                    src={URL.createObjectURL(formData.photo)}
-                    alt="Foto de perfil"
-                    className="profile-photo"
-                  />
-                  <button
-                    type="button"
-                    className="remove-photo-button"
-                    onClick={handleRemovePhoto}
-                  >
-                    Eliminar foto
-                  </button>
-                </div>
-              ) : (
-                <div className="botonSubmit">
-                  <span>{fileName || "Seleccionar foto"}</span>
-                  <input
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    required
-                  />
-                </div>
-              )}
-              <div className="file-path-wrapper">
-                <input className="file-path validate" type="text" />
-              </div>
+          ) : (
+            <div className="botonSubmit">
+              {/* Actualiza para mostrar solo el nombre del archivo seleccionado */}
+              <span>Seleccionar foto</span>
+              <input
+                type="file"
+                name="photo"
+                accept="image/*"
+                onChange={handleFileChange}
+                required
+              />
             </div>
+          )}
+          <div className="file-path-wrapper">
+            <input className="file-path validate" type="text" />
           </div>
+        </div>
+      </div>
 
           <button className="botonSubmit" type="submit">
             Registrarse
