@@ -2,35 +2,34 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
+import { FaMailBulk, FaKey } from 'react-icons/fa';
 import 'react-toastify/dist/ReactToastify.css';
-import "./LoginForm.scss";
+import './LoginForm.scss';
 
 export function LoginForm() {
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
-  const [isLoggingIn, setIsLoggingIn] = useState(false); // Nuevo estado
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const navigate = useNavigate();
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setIsLoggingIn(true); 
+    setIsLoggingIn(true);
 
     try {
       const response = await axios.post('https://back-barrios-462cb6c76674.herokuapp.com/auth/login', {
         email: loginEmail,
-        password: loginPassword
+        password: loginPassword,
       });
 
       if (response.status === 200) {
         const token = response.data.token;
         localStorage.setItem('token', token);
 
-        // Ocultar "Iniciando sesión..."
         setIsLoggingIn(false);
 
-        // Mostrar notificación de éxito
         toast.success('Inicio de sesión exitoso', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -38,13 +37,14 @@ export function LoginForm() {
           draggable: true,
         });
 
-        // Redirigir a la página de bienvenida u otra ruta autorizada
-        navigate('/home');
+        // Esperar 3 segundos antes de redirigir a la página /home
+        setTimeout(() => {
+          navigate('/home');
+        }, 3000);
       } else {
-        // Mostrar notificación de error si la respuesta del servidor no es 200
-        setIsLoggingIn(false); // Ocultar "Iniciando sesión..."
-        toast.error('Error en el inicio de sesión', {
-          position: "top-right",
+        setIsLoggingIn(false);
+        toast.error('Error en el inicio de sesión. Por favor, inténtalo de nuevo más tarde.', {
+          position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -53,16 +53,30 @@ export function LoginForm() {
         });
       }
     } catch (error) {
-      // Mostrar notificación de error en caso de error en la solicitud
-      setIsLoggingIn(false); // Ocultar "Iniciando sesión..."
-      toast.error('Error en la solicitud', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      setIsLoggingIn(false);
+
+      if (error.response && error.response.data && error.response.data.error) {
+        // Mostrar el mensaje específico del backend si está presente
+        toast.error(error.response.data.error, {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      } else {
+        // Si no hay mensaje específico del backend, mostrar el mensaje genérico
+        toast.error('Error en la solicitud. Por favor, inténtalo de nuevo más tarde.', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+
       console.log('Error en la solicitud:', error);
     }
   };
@@ -73,6 +87,9 @@ export function LoginForm() {
         <h1 className="titleCard">Iniciar sesión</h1>
         <form onSubmit={handleLoginSubmit}>
           <div className="input-container">
+            <label htmlFor="loginEmail" className="submarine-label">
+              Correo electrónico
+            </label>
             <input
               type="email"
               id="loginEmail"
@@ -81,11 +98,12 @@ export function LoginForm() {
               required
               className="submarine-input"
             />
-            <label htmlFor="loginEmail" className="submarine-label">
-              Correo electrónico:
-            </label>
+            <FaMailBulk className="icon email" />
           </div>
           <div className="input-container">
+            <label htmlFor="loginPassword" className="submarine-label">
+              Contraseña
+            </label>
             <input
               type="password"
               id="loginPassword"
@@ -94,9 +112,7 @@ export function LoginForm() {
               required
               className="submarine-input"
             />
-            <label htmlFor="loginPassword" className="submarine-label">
-              Contraseña:
-            </label>
+            <FaKey className="icon password" />
           </div>
           <div className="row">
             <div className="col s12 center-align">
@@ -110,7 +126,7 @@ export function LoginForm() {
           </p>
         </form>
       </div>
-      {isLoggingIn && ( // Mostrar "Iniciando sesión..." si isLoggingIn es true
+      {isLoggingIn && (
         <div className="logging-in-overlay">
           <p>Iniciando sesión...</p>
         </div>

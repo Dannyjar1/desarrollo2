@@ -27,7 +27,7 @@
 
 .botonSubmit {
   color: #fff;
-  background-color: #6f0c0c;
+  background-color: #741c1c;
   border-radius: 10px;
   padding: 10px 20px;
   width: auto;
@@ -38,48 +38,48 @@
 }
 
 .botonSubmit:hover {
-  background-color: #ce4646;
+  background-color: #ce4b4b;
   color: #fff;
 }
 
 .input-container {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 30px 20px 20px 30px;
 }
 
 .submarine-label {
   position: absolute;
   pointer-events: none;
-  left: 10px;
-  top: 15px;
+  left: 0px; /* Ajusta el valor según la posición deseada */
+  top: 0px;
   transition: 0.3s;
   font-size: 16px;
   color: #06283D;
-  transform-origin: left top;
-  transform: translateY(0);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 0; /* Ajusta el valor según la posición deseada */
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #06283d;
+}
+
+.active {
+  transform: translateY(-25px) scale(0.8);
 }
 
 .submarine-input {
-  padding: 20px 10px 5px;
+  padding: 20px 10px 10px 40px; /* Ajusta el valor de la derecha (5px) y el valor de arriba (40px) */
   width: 100%;
   border: none;
   border-bottom: 2px solid #06283D;
   font-size: 18px;
   color: #06283D;
+
   &:focus {
     outline: none;
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
-  }
-  &:valid {
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
-  }
-  &:not(:placeholder-shown) {
-    ~ .submarine-label {
-      transform: translateY(-100%) scale(0.8);
-    }
   }
 }

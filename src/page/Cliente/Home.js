@@ -16,7 +16,7 @@ export function Home() {
             
 
 <Menu.Item 
-        as ={ NavLink} to='/denuncias'
+        as ={ NavLink} to='/home'
         name='Inicio'
         
       />
