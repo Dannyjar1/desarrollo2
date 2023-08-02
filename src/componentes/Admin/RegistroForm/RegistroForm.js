@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import { FaUser, FaAddressCard, FaPhone, FaEnvelope, FaLock, FaImage } from 'react-icons/fa';
 import "react-toastify/dist/ReactToastify.css";
 import * as yup from "yup";
 import "./RegistroForm.scss";
 
-export function RegistroForm () {
+export function RegistroForm() {
   const validationSchema = yup.object().shape({
     nombreCompleto: yup
       .string()
@@ -52,15 +53,26 @@ export function RegistroForm () {
       [name]: value
     });
   };
+  const [fileName, setFileName] = useState("");
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
+    const selectedFile = files[0];
+
     setFormData({
       ...formData,
-      [name]: files[0]
+      [name]: selectedFile
     });
+
+    setFileName(selectedFile ? selectedFile.name : "");
   };
 
+  const handleRemovePhoto = () => {
+    setFormData({
+      ...formData,
+      photo: null
+    });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -102,117 +114,176 @@ export function RegistroForm () {
 
   return (
     <div className="page-container">
-      <div className="card container1"> {/* Wrap the form in a card */}
-      <h1>Registro</h1>
+      <div className="card container1">
+        <h1 className="titleCard">Registrarse</h1>
         <form onSubmit={handleSubmit}>
-        <div className="input-field">
-          <label htmlFor="nombreCompleto" className="submarine-label">
-            Nombre Completo:
-          </label>
-          <input
-            type="text"
-            id="nombreCompleto"
-            name="nombreCompleto"
-            value={formData.nombreCompleto}
-            onChange={handleChange}
-            required
-            className="submarine-input"
-          />
-          {errors.nombreCompleto && (
-            <div className="error-message">{errors.nombreCompleto}</div>
-          )}
-        </div>
-        <div className="input-field">
-          <label htmlFor="cedula" className="submarine-label">
-            Cédula:
-          </label>
-          <input
-            type="text"
-            id="cedula"
-            name="cedula"
-            value={formData.cedula}
-            onChange={handleChange}
-            required
-            className="submarine-input"
-          />
-          {errors.cedula && (
-            <div className="error-message">{errors.cedula}</div>
-          )}
-        </div>
-        <div className="input-field">
-          <label htmlFor="numTelefono" className="submarine-label">
-            Número de Teléfono:
-          </label>
-          <input
-            type="text"
-            id="numTelefono"
-            name="numTelefono"
-            value={formData.numTelefono}
-            onChange={handleChange}
-            required
-            className="submarine-input"
-          />
-          {errors.numTelefono && (
-            <div className="error-message">{errors.numTelefono}</div>
-          )}
-        </div>
-        <div className="input-field">
-          <label htmlFor="email" className="submarine-label">
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="submarine-input"
-          />
-          {errors.email && (
-            <div className="error-message">{errors.email}</div>
-          )}
-        </div>
-        <div className="input-field">
-          <label htmlFor="password" className="submarine-label">
-            Contraseña
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-            className="submarine-input"
-          />
-          {errors.password && (
-            <div className="error-message">{errors.password}</div>
-          )}
-        </div>
-        <div className="file-field input-field">
-          <div className="btn submarine-btn">
-            <span>Foto</span>
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaUser className="input-icon" />
+            </div>
+            <label
+              htmlFor="nombreCompleto"
+              className={formData.nombreCompleto ? "active" : "submarine-label"}
+            >
+              Nombre Completo:
+            </label>
             <input
-              type="file"
-              name="photo"
-              accept="image/*"
-              onChange={handleFileChange}
+              type="text"
+              id="nombreCompleto"
+              name="nombreCompleto"
+              value={formData.nombreCompleto}
+              onChange={handleChange}
               required
+              className="submarine-input"
             />
+            {errors.nombreCompleto && (
+              <div className="error-message">{errors.nombreCompleto}</div>
+            )}
           </div>
-          <div className="file-path-wrapper">
-            <input className="file-path validate" type="text" />
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaAddressCard className="input-icon" />
+            </div>
+            <label
+              htmlFor="cedula"
+              className={formData.cedula ? "active" : "submarine-label"}
+            >
+              Cédula:
+            </label>
+            <input
+              type="text"
+              id="cedula"
+              name="cedula"
+              value={formData.cedula}
+              onChange={handleChange}
+              required
+              className="submarine-input"
+            />
+            {errors.cedula && (
+              <div className="error-message">{errors.cedula}</div>
+            )}
           </div>
-        </div>
-        <button className="btn submarine-btn" type="submit">
-            Registrar
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaPhone className="input-icon" />
+            </div>
+            <label
+              htmlFor="numTelefono"
+              className={formData.numTelefono ? "active" : "submarine-label"}
+            >
+              Número de Teléfono:
+            </label>
+            <input
+              type="text"
+              id="numTelefono"
+              name="numTelefono"
+              value={formData.numTelefono}
+              onChange={handleChange}
+              required
+              className="submarine-input"
+            />
+            {errors.numTelefono && (
+              <div className="error-message">{errors.numTelefono}</div>
+            )}
+          </div>
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaEnvelope className="input-icon" />
+            </div>
+            <label
+              htmlFor="email"
+              className={formData.email ? "active" : "submarine-label"}
+            >
+              Email:
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              className="submarine-input"
+            />
+            {errors.email && (
+              <div className="error-message">{errors.email}</div>
+            )}
+          </div>
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaLock className="input-icon" />
+            </div>
+            <label
+              htmlFor="password"
+              className={formData.password ? "active" : "submarine-label"}
+            >
+              Contraseña:
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              className="submarine-input"
+            />
+            {errors.password && (
+              <div className="error-message">{errors.password}</div>
+            )}
+          </div>
+          <div className="input-container">
+            <div className="icon-wrapper">
+              <FaImage className="input-icon" />
+            </div>
+            <label
+              htmlFor="photo"
+              className={formData.photo ? "active" : "submarine-label"}
+            >
+              Foto de perfil:
+            </label>
+            <div className="file-field input-field">
+              {formData.photo ? (
+                <div className="photo-container">
+                  <img
+                    src={URL.createObjectURL(formData.photo)}
+                    alt="Foto de perfil"
+                    className="profile-photo"
+                  />
+                  <button
+                    type="button"
+                    className="remove-photo-button"
+                    onClick={handleRemovePhoto}
+                  >
+                    Eliminar foto
+                  </button>
+                </div>
+              ) : (
+                <div className="botonSubmit">
+                  <span>{fileName || "Seleccionar foto"}</span>
+                  <input
+                    type="file"
+                    name="photo"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    required
+                  />
+                </div>
+              )}
+              <div className="file-path-wrapper">
+                <input className="file-path validate" type="text" />
+              </div>
+            </div>
+          </div>
+
+          <button className="botonSubmit" type="submit">
+            Registrarse
           </button>
         </form>
       </div>
       <ToastContainer />
     </div>
   );
-}
+};
 
 export default RegistroForm;
