@@ -5,7 +5,7 @@ import { FaUser, FaAddressCard, FaPhone, FaEnvelope, FaLock, FaImage } from "rea
 import * as yup from "yup";
 import "./RegistroForm.scss";
 
-export function RegistroForm () {
+export function RegistroForm() {
   const validationSchema = yup.object().shape({
     nombreCompleto: yup.string().required("El nombre completo es requerido.").min(6, "El nombre completo debe tener al menos 6 caracteres.").max(255, "El nombre completo no puede tener más de 255 caracteres."),
     cedula: yup.string().required("La cédula es requerida.").min(6, "La cédula debe tener al menos 6 caracteres.").max(10, "La cédula no puede tener más de 10 caracteres."),
@@ -87,171 +87,176 @@ export function RegistroForm () {
       <div className="card container1">
         <h1 className="titleCard">Registrarse</h1>
         <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <div className="icon-wrapper">
-              <FaUser className="input-icon" />
+          <div className="row">
+            <div className="col s6">
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaUser className="input-icon" />
+                </div>
+                <label
+                  htmlFor="nombreCompleto"
+                  className={formData.nombreCompleto ? "active" : "submarine-label"}
+                >
+                  Nombre Completo:
+                </label>
+                <input
+                  type="text"
+                  id="nombreCompleto"
+                  name="nombreCompleto"
+                  value={formData.nombreCompleto}
+                  onChange={handleChange}
+                  required
+                  className="submarine-input"
+                />
+                {errors.nombreCompleto && (
+                  <div className="error-message">{errors.nombreCompleto}</div>
+                )}
+              </div>
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaAddressCard className="input-icon" />
+                </div>
+                <label
+                  htmlFor="cedula"
+                  className={formData.cedula ? "active" : "submarine-label"}
+                >
+                  Cédula:
+                </label>
+                <input
+                  type="text"
+                  id="cedula"
+                  name="cedula"
+                  value={formData.cedula}
+                  onChange={handleChange}
+                  required
+                  className="submarine-input"
+                />
+                {errors.cedula && (
+                  <div className="error-message">{errors.cedula}</div>
+                )}
+              </div>
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaPhone className="input-icon" />
+                </div>
+                <label
+                  htmlFor="numTelefono"
+                  className={formData.numTelefono ? "active" : "submarine-label"}
+                >
+                  Número de Teléfono:
+                </label>
+                <input
+                  type="text"
+                  id="numTelefono"
+                  name="numTelefono"
+                  value={formData.numTelefono}
+                  onChange={handleChange}
+                  required
+                  className="submarine-input"
+                />
+                {errors.numTelefono && (
+                  <div className="error-message">{errors.numTelefono}</div>
+                )}
+              </div>
             </div>
-            <label
-              htmlFor="nombreCompleto"
-              className={formData.nombreCompleto ? "active" : "submarine-label"}
-            >
-              Nombre Completo:
-            </label>
-            <input
-              type="text"
-              id="nombreCompleto"
-              name="nombreCompleto"
-              value={formData.nombreCompleto}
-              onChange={handleChange}
-              required
-              className="submarine-input"
-            />
-            {errors.nombreCompleto && (
-              <div className="error-message">{errors.nombreCompleto}</div>
-            )}
+            <div className="col s6">
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaEnvelope className="input-icon" />
+                </div>
+                <label
+                  htmlFor="email"
+                  className={formData.email ? "active" : "submarine-label"}
+                >
+                  Email:
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="submarine-input"
+                />
+                {errors.email && (
+                  <div className="error-message">{errors.email}</div>
+                )}
+              </div>
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaLock className="input-icon" />
+                </div>
+                <label
+                  htmlFor="password"
+                  className={formData.password ? "active" : "submarine-label"}
+                >
+                  Contraseña:
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                  className="submarine-input"
+                />
+                {errors.password && (
+                  <div className="error-message">{errors.password}</div>
+                )}
+              </div>
+              <div className="input-container">
+                <div className="icon-wrapper">
+                  <FaImage className="input-icon" />
+                </div>
+                <label
+                  htmlFor="photo"
+                  className={formData.photo ? "active" : "submarine-label"}
+                >
+                  Foto de perfil:
+                </label>
+                <div className="file-field input-field">
+                  {formData.photo ? (
+                    <div className="photo-container">
+                      {/* Muestra el nombre del archivo seleccionado */}
+                      <span>{formData.photo.name}</span>
+                      <button
+                        type="button"
+                        className="remove-photo-button"
+                        onClick={handleRemovePhoto}
+                      >
+                        Eliminar foto
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="botonSubmit">
+                      {/* Actualiza para mostrar solo el nombre del archivo seleccionado */}
+                      <span>Seleccionar foto</span>
+                      <input
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        required
+                      />
+                    </div>
+                  )}
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="input-container">
-            <div className="icon-wrapper">
-              <FaAddressCard className="input-icon" />
-            </div>
-            <label
-              htmlFor="cedula"
-              className={formData.cedula ? "active" : "submarine-label"}
-            >
-              Cédula:
-            </label>
-            <input
-              type="text"
-              id="cedula"
-              name="cedula"
-              value={formData.cedula}
-              onChange={handleChange}
-              required
-              className="submarine-input"
-            />
-            {errors.cedula && (
-              <div className="error-message">{errors.cedula}</div>
-            )}
-          </div>
-          <div className="input-container">
-            <div className="icon-wrapper">
-              <FaPhone className="input-icon" />
-            </div>
-            <label
-              htmlFor="numTelefono"
-              className={formData.numTelefono ? "active" : "submarine-label"}
-            >
-              Número de Teléfono:
-            </label>
-            <input
-              type="text"
-              id="numTelefono"
-              name="numTelefono"
-              value={formData.numTelefono}
-              onChange={handleChange}
-              required
-              className="submarine-input"
-            />
-            {errors.numTelefono && (
-              <div className="error-message">{errors.numTelefono}</div>
-            )}
-          </div>
-          <div className="input-container">
-            <div className="icon-wrapper">
-              <FaEnvelope className="input-icon" />
-            </div>
-            <label
-              htmlFor="email"
-              className={formData.email ? "active" : "submarine-label"}
-            >
-              Email:
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="submarine-input"
-            />
-            {errors.email && (
-              <div className="error-message">{errors.email}</div>
-            )}
-          </div>
-          <div className="input-container">
-            <div className="icon-wrapper">
-              <FaLock className="input-icon" />
-            </div>
-            <label
-              htmlFor="password"
-              className={formData.password ? "active" : "submarine-label"}
-            >
-              Contraseña:
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="submarine-input"
-            />
-            {errors.password && (
-              <div className="error-message">{errors.password}</div>
-            )}
-          </div>
-          <div className="input-container">
-        <div className="icon-wrapper">
-          <FaImage className="input-icon" />
-        </div>
-        <label
-          htmlFor="photo"
-          className={formData.photo ? "active" : "submarine-label"}
-        >
-          Foto de perfil:
-        </label>
-        <div className="file-field input-field">
-          {formData.photo ? (
-            <div className="photo-container">
-              {/* Muestra el nombre del archivo seleccionado */}
-              <span>{formData.photo.name}</span>
-              <button
-                type="button"
-                className="remove-photo-button"
-                onClick={handleRemovePhoto}
-              >
-                Eliminar foto
-              </button>
-            </div>
-          ) : (
-            <div className="botonSubmit">
-              {/* Actualiza para mostrar solo el nombre del archivo seleccionado */}
-              <span>Seleccionar foto</span>
-              <input
-                type="file"
-                name="photo"
-                accept="image/*"
-                onChange={handleFileChange}
-                required
-              />
-            </div>
-          )}
-          <div className="file-path-wrapper">
-            <input className="file-path validate" type="text" />
-          </div>
-        </div>
-      </div>
-
           <button className="botonSubmit" type="submit">
             Registrarse
           </button>
         </form>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </div>
   );
-};
+}
 
 export default RegistroForm;
